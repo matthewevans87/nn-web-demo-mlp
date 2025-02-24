@@ -1,0 +1,15 @@
+<div class="canvas-container">
+  <canvas
+    #canvas
+    width="28"
+    height="28"
+    (mousedown)="startDrawing($event)"
+    (mousemove)="draw($event)"
+    (mouseup)="stopDrawing()"
+    (mouseleave)="stopDrawing()"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+  </canvas>
+</div>

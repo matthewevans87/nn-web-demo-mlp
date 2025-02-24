@@ -1,10 +1,25 @@
 <div class="container">
-  <h1>Digit Recognition</h1>
-  <app-drawing-canvas (imageData)="onImageData($event)"></app-drawing-canvas>
-  <div class="prediction">Predicted digit: {{ prediction }}</div>
-</div>
+  <h1>Neural Network Digit Recognition Demonstration</h1>
 
-<div>
-  <h2>input image debug</h2>
-  <pre>{{ matrixText }}</pre>
+  <div class="demo-grid">
+    <div class="demo-section">
+      <h2>Interactive Recognition</h2>
+      <p class="instructions">Draw a digit or click "Show Random Sample"</p>
+      <app-drawing-canvas
+        (imageData)="onImageData($event)"
+        [inputImageData]="currentImageData"
+      ></app-drawing-canvas>
+      <div class="button-group">
+        <button (click)="showRandomImage()">Show Random Sample</button>
+        <button (click)="clear()">Clear</button>
+      </div>
+      <div class="results-box" *ngIf="prediction !== -1">
+        <div class="prediction label-text">Prediction: {{ prediction }}</div>
+
+        <div *ngIf="showingMnistSample" class="label-text">
+          Ground Truth: {{ randomImageLabel }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

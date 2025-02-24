@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom, Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 interface NetworkParams {
   W_hidden: number[][];
@@ -25,7 +25,7 @@ export class MLPService {
 
   private async loadWeights() {
     const params = await firstValueFrom(
-      this.http.get<NetworkParams>('assets/weights_mlp2.json')
+      this.http.get<NetworkParams>('assets/weights/weights_mlp3.json')
     );
     this.W_hidden = params.W_hidden;
     this.W_output = params.W_output;

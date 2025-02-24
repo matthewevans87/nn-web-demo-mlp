@@ -1,51 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MLPService } from './mlp.service';
-import { Subject } from 'rxjs';
+import { MnistDataService } from './mnist-data.service';
+import { DrawingCanvasComponent } from './drawing-canvas/drawing-canvas.component';
 
 @Component({
   selector: 'app-root',
-  styles: [
-    `
-      .container {
-        text-align: center;
-        margin: 20px;
-      }
-      .prediction {
-        font-size: 24px;
-        margin-top: 20px;
-      }
-    `,
-  ],
+  styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  prediction = 0;
-  matrixText = '';
+  @ViewChild(DrawingCanvasComponent) drawingCanvas!: DrawingCanvasComponent;
+  prediction = -1;
+  randomImageLabel = -1;
+  currentImageData: number[] | null = null;
+  showingMnistSample = false;
 
-  constructor(private mlpService: MLPService) {}
+  constructor(
+    private mlpService: MLPService,
+    private mnistDataService: MnistDataService
+  ) {}
+
+  resetPrediction() {
+    this.prediction = -1;
+    this.showingMnistSample = false;
+  }
 
   onImageData(imageData: number[]) {
     this.prediction = this.mlpService.predict(imageData);
-    this.matrixText = this.get01MatrixText(this.get01Matrix(28, 28, imageData));
+    // this.showingMnistSample = false;
+    // this.randomImageLabel = -1;
   }
 
-  get01Matrix(width: number, height: number, input: number[]): number[][] {
-    const matrix = new Array(height)
-      .fill(0)
-      .map(() => new Array(width).fill(0));
-
-    for (let i = 0; i < input.length; i++) {
-      const x = i % width;
-      const y = Math.floor(i / width);
-      matrix[y][x] = input[i];
+  showRandomImage() {
+    const image = this.mnistDataService.getRandomImage();
+    if (image) {
+      this.currentImageData = image.pixels;
+      this.randomImageLabel = image.label;
+      this.prediction = this.mlpService.predict(image.pixels);
+      this.showingMnistSample = true;
     }
-
-    return matrix;
   }
 
-  get01MatrixText(matrix: number[][]): string {
-    return matrix
-      .map((row) => row.map((val) => (val === 0 ? ' ' : '█')).join(''))
-      .join('\n');
+  clear() {
+    this.drawingCanvas.clear();
+    this.currentImageData = null;
+    this.showingMnistSample = false;
+    this.resetPrediction();
   }
 }

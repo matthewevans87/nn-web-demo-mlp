@@ -1,0 +1,13 @@
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+canvas {
+  border: 2px solid #000;
+  background-color: white;
+  image-rendering: pixelated;
+  width: 280px;
+  height: 280px;
+}
