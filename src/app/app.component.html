@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Digit Recognition</h1>
+  <app-drawing-canvas (imageData)="onImageData($event)"></app-drawing-canvas>
+  <div class="prediction">Predicted digit: {{ prediction }}</div>
+</div>
+
+<div>
+  <h2>input image debug</h2>
+  <pre>{{ matrixText }}</pre>
+</div>
