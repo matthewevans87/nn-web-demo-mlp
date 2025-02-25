@@ -25,7 +25,7 @@ export class MLPService {
 
   private async loadWeights() {
     const params = await firstValueFrom(
-      this.http.get<NetworkParams>('assets/weights/weights_mlp3.json')
+      this.http.get<NetworkParams>('assets/weights/weights.json')
     );
     this.W_hidden = params.W_hidden;
     this.W_output = params.W_output;
