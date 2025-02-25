@@ -20,7 +20,7 @@ export class ActivationDisplayComponent implements OnChanges {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   @Input() activations: number[] = [];
   @Input() label: string = '';
-  @Input() pixelSize = 20;
+  @Input() pixelSize = 15;
   @Input() orientation: 'row' | 'column' = 'column';
 
   width = this.pixelSize;
