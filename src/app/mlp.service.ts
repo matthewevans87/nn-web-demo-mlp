@@ -52,6 +52,10 @@ export class MLPService {
   }
 
   forward(input: number[]): [number[], number[]] {
+    if (!this.initialized) {
+      throw new Error('MLPService is not initialized. Weights are not loaded.');
+    }
+
     // Hidden layer: (784x20 @ 784x1) + 20x1 = 20x1
     const hidden = new Array(20)
       .fill(0)
@@ -75,11 +79,7 @@ export class MLPService {
   }
 
   predict(input: number[]): number {
-    if (!this.initialized) {
-      throw new Error('MLPService is not initialized. Weights are not loaded.');
-    }
-
-    const [_, output] = this.forward(input);
+    const [hidden, output] = this.forward(input);
     const prediction = output.indexOf(Math.max(...output));
     return prediction;
   }

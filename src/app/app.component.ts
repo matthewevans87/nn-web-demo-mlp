@@ -14,6 +14,8 @@ export class AppComponent {
   randomImageLabel = -1;
   currentImageData: number[] | null = null;
   showingMnistSample = false;
+  hiddenActivations: number[] = [];
+  outputActivations: number[] = [];
 
   constructor(
     private mlpService: MLPService,
@@ -26,9 +28,10 @@ export class AppComponent {
   }
 
   onImageData(imageData: number[]) {
-    this.prediction = this.mlpService.predict(imageData);
-    // this.showingMnistSample = false;
-    // this.randomImageLabel = -1;
+    const [hidden, output] = this.mlpService.forward(imageData);
+    this.hiddenActivations = hidden;
+    this.outputActivations = output;
+    this.prediction = output.indexOf(Math.max(...output));
   }
 
   showRandomImage() {
@@ -46,5 +49,7 @@ export class AppComponent {
     this.currentImageData = null;
     this.showingMnistSample = false;
     this.resetPrediction();
+    this.hiddenActivations = [];
+    this.outputActivations = [];
   }
 }

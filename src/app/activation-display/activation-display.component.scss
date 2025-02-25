@@ -1,0 +1,16 @@
+.activation-display {
+  display: inline-block;
+  margin: 0 8px;
+  text-align: center;
+}
+
+canvas {
+  border: 1px solid #000;
+  background: white;
+  image-rendering: pixelated;
+}
+
+.label {
+  margin-top: 4px;
+  font-size: 12px;
+}

@@ -77,6 +77,14 @@ canvas {
   margin-top: 16px;
 }
 
+.activations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin: 16px 0;
+}
+
 @media (max-width: 768px) {
   .demo-grid {
     grid-template-columns: 1fr;

@@ -19,6 +19,18 @@
         <div *ngIf="showingMnistSample" class="label-text">
           Ground Truth: {{ randomImageLabel }}
         </div>
+        <div class="activations" *ngIf="prediction >= 0">
+          <app-activation-display
+            [activations]="hiddenActivations"
+            label="Hidden Layer"
+            orientation="row"
+          ></app-activation-display>
+          <app-activation-display
+            [activations]="outputActivations"
+            label="Output Layer"
+            orientation="row"
+          ></app-activation-display>
+        </div>
       </div>
     </div>
   </div>
