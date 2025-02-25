@@ -38,16 +38,32 @@
   <div>
     <h2>Model Information</h2>
     <p>
-      This model was trained on the MNIST dataset, which consists of 60,000
-      handwritten digits. The model has an input layer of 784 neurons (28x28
-      pixels), one hidden layer with 20 neurons, and an output layer with 10
-      neurons (one for each digit).
+      This feed-forward fully connected neural network was trained on the MNIST
+      dataset, which consists of 60,000 handwritten digits. The model has an
+      input layer of 784 neurons (28x28 pixels), one hidden layer with 20
+      neurons, and an output layer with 10 neurons (one for each digit).
     </p>
     <p>
-      The model uses the sigmoid activation function for the hidden layer and
-      softmax for the output layer. It was trained over 10 epochs using batch
-      gradient descent with a batch size of 64 and a learning rate of 0.01. The
-      model achieves 94% accuracy on the test set.
+      The model uses the sigmoid activation function for the hidden layer, and
+      softmax for the output layer. Loss is measured using cross-entropy. It was
+      trained over 10 epochs using batch gradient descent with a batch size of
+      64 and a learning rate of 0.01. The model achieves 94% accuracy on the
+      test set.
+    </p>
+    <p>
+      Code for the model is available
+      <a
+        href="https://github.com/matthewevans87/neural-networks-independent-study"
+        target="_blank"
+        rel="noopener noreferrer"
+        >here</a
+      >, and the demo code is available
+      <a
+        href="https://github.com/matthewevans87/nn-web-demo-mlp/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >here</a
+      >.
     </p>
   </div>
   <div>
