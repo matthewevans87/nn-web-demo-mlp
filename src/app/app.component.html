@@ -13,13 +13,13 @@
         <button (click)="showRandomImage()">Show Random Sample</button>
         <button (click)="clear()">Clear</button>
       </div>
-      <div class="results-box" *ngIf="prediction !== -1">
+      <div class="results-box" [class.visible]="prediction !== undefined">
         <div class="prediction label-text">Prediction: {{ prediction }}</div>
 
         <div *ngIf="showingMnistSample" class="label-text">
           Ground Truth: {{ randomImageLabel }}
         </div>
-        <div class="activations" *ngIf="prediction >= 0">
+        <div class="activations" *ngIf="prediction != undefined">
           <app-activation-display
             [activations]="hiddenActivations"
             label="Hidden Layer"

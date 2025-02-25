@@ -10,12 +10,12 @@ import { DrawingCanvasComponent } from './drawing-canvas/drawing-canvas.componen
 })
 export class AppComponent {
   @ViewChild(DrawingCanvasComponent) drawingCanvas!: DrawingCanvasComponent;
-  prediction = -1;
+  prediction: number | undefined = undefined;
   randomImageLabel = -1;
   currentImageData: number[] | null = null;
   showingMnistSample = false;
-  hiddenActivations: number[] = [];
-  outputActivations: number[] = [];
+  hiddenActivations: number[] = new Array(20).fill(0);
+  outputActivations: number[] = new Array(10).fill(0);
 
   constructor(
     private mlpService: MLPService,
@@ -23,7 +23,7 @@ export class AppComponent {
   ) {}
 
   resetPrediction() {
-    this.prediction = -1;
+    this.prediction = undefined;
     this.showingMnistSample = false;
   }
 
