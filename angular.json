@@ -33,7 +33,9 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/nn-web-demo-mlp/",
+            "deployUrl": "/nn-web-demo-mlp/"
           },
           "configurations": {
             "production": {
